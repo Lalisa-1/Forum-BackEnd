@@ -1,13 +1,5 @@
 const mysql2 = require("mysql2");
 
-// const dbconnection = mysql2.createPool({
-// 	socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
-// 	user: process.env.USER,
-// 	database: process.env.DATABASE,
-// 	host: "localhost",
-// 	password: process.env.PASSWORD,
-// 	connectionLimit: 10,
-// });
 const dbconnection = mysql2.createPool({
 	socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
 	user: process.env.DB_USER,
@@ -16,6 +8,7 @@ const dbconnection = mysql2.createPool({
 	password: process.env.DB_PASSWORD,
 	connectionLimit: 10,
 });
+// const dbconnection = mysql2.createPool(process.env.DATABASE_URL);
 
 // dbconnection.execute("select'test'", (err, result) => {
 // 	if (err) {
@@ -26,3 +19,26 @@ const dbconnection = mysql2.createPool({
 // });
 
 module.exports = dbconnection.promise();
+
+// `CREATE TABLE users (
+// 	userid INT(20) NOT NULL AUTO_INCREMENT,
+//     user_name VARCHAR(20)NOT NULL,
+// 	first_name VARCHAR(40)NOT NULL,
+//     last_name VARCHAR(40)NOT NULL,
+//     email VARCHAR(40)NOT NULL,
+// 	password VARCHAR(100)NOT NULL,
+// 	PRIMARY KEY (userid)
+
+// );``CREATE TABLE questions (
+//     id INT(20) NOT NULL AUTO_INCREMENT,
+//     questionid VARCHAR (100) NOT NULL UNIQUE,
+//     userid INT(20) NOT NULL,
+//     title VARCHAR(50) NOT NULL, description VARCHAR(200) NOT NULL,
+//     tag VARCHAR (20),
+//     PRIMARY KEY(id, questionid)
+// ));``CREATE TABLE answers (
+//     answerid INT(20) NOT NULL AUTO_INCREMENT,
+//     userid INT(20) NOT NULL,
+//     questionid VARCHAR(100) NOT NULL,
+//     answer VARCHAR(200) NOT NULL,
+//     PRIMARY KEY(answerid));`;
