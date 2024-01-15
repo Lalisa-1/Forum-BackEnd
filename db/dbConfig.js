@@ -1,14 +1,13 @@
 const mysql2 = require("mysql2");
 
 const dbconnection = mysql2.createPool({
-	socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
+	// socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
 	user: process.env.DB_USER,
 	database: process.env.DB_DATABASE,
 	host: process.env.DB_HOST,
 	password: process.env.DB_PASSWORD,
 	connectionLimit: 10,
 });
-// const dbconnection = mysql2.createPool(process.env.DATABASE_URL);
 
 // dbconnection.execute("select'test'", (err, result) => {
 // 	if (err) {
@@ -17,6 +16,8 @@ const dbconnection = mysql2.createPool({
 // 		console.log(result);
 // 	}
 // });
+
+// Example using parameterized query with Node.js MySQL library
 
 // let users = `CREATE TABLE users (
 // 	userid INT(20) NOT NULL AUTO_INCREMENT,
@@ -45,16 +46,4 @@ const dbconnection = mysql2.createPool({
 //     answer VARCHAR(200) NOT NULL,
 //     PRIMARY KEY(answerid));`;
 
-// dbconnection.query(users, (err, result) => {
-// 	if (err) throw err;
-// 	console.log("user created");
-// });
-// dbconnection.query(questions, (err, result) => {
-// 	if (err) throw err;
-// 	console.log("question asked");
-// });
-// dbconnection.query(answers, (err, result) => {
-// 	if (err) throw err;
-// 	console.log("answers are here!");
-// });
 module.exports = dbconnection.promise();
