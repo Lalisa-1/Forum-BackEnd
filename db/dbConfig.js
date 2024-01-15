@@ -18,9 +18,7 @@ const dbconnection = mysql2.createPool({
 // 	}
 // });
 
-module.exports = dbconnection.promise();
-
-// `CREATE TABLE users (
+// let users = `CREATE TABLE users (
 // 	userid INT(20) NOT NULL AUTO_INCREMENT,
 //     user_name VARCHAR(20)NOT NULL,
 // 	first_name VARCHAR(40)NOT NULL,
@@ -29,16 +27,34 @@ module.exports = dbconnection.promise();
 // 	password VARCHAR(100)NOT NULL,
 // 	PRIMARY KEY (userid)
 
-// );``CREATE TABLE questions (
+// );`;
+// let questions = `CREATE TABLE questions (
 //     id INT(20) NOT NULL AUTO_INCREMENT,
-//     questionid VARCHAR (100) NOT NULL UNIQUE,
+//     questionid VARCHAR(100) NOT NULL UNIQUE,
 //     userid INT(20) NOT NULL,
-//     title VARCHAR(50) NOT NULL, description VARCHAR(200) NOT NULL,
-//     tag VARCHAR (20),
-//     PRIMARY KEY(id, questionid)
-// ));``CREATE TABLE answers (
+//     title VARCHAR(50) NOT NULL,
+//     description VARCHAR(200) NOT NULL,
+//     tag VARCHAR(20),
+//     PRIMARY KEY (id, questionid)
+// )`;
+
+// let answers = `CREATE TABLE answers (
 //     answerid INT(20) NOT NULL AUTO_INCREMENT,
 //     userid INT(20) NOT NULL,
 //     questionid VARCHAR(100) NOT NULL,
 //     answer VARCHAR(200) NOT NULL,
 //     PRIMARY KEY(answerid));`;
+
+// dbconnection.query(users, (err, result) => {
+// 	if (err) throw err;
+// 	console.log("user created");
+// });
+// dbconnection.query(questions, (err, result) => {
+// 	if (err) throw err;
+// 	console.log("question asked");
+// });
+// dbconnection.query(answers, (err, result) => {
+// 	if (err) throw err;
+// 	console.log("answers are here!");
+// });
+module.exports = dbconnection.promise();
